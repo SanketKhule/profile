@@ -271,7 +271,7 @@ a {
     letter-spacing: 7px;
     margin-bottom: 2rem;
 }
-@media screen and (max-width: 768px) {
+@media(max-width: 768px), (max-width: 1165px) {
     .hero {
         height: 50vh;
         width: 100vw;
@@ -291,12 +291,12 @@ a {
         top: 35%;
     }
     .hero_content h1 {
-        font-size: 2rem;
+        font-size: 3rem;
         margin-bottom: -2.2rem;
     }
 
     .hero_content p {
-        font-size: 0.7rem;
+        font-size: 1rem;
         letter-spacing: 3px;
         margin-bottom: 1rem;
     }
