@@ -1,0 +1,361 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Mrs+Saint+Delafield&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Mrs+Saint+Delafield&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+    /*========== Colors ==========*/
+    --black-color: hsl(0, 0%, 0%);
+    --black-color-light: hsl(0, 0%, 5%);
+    --black-color-lighten: hsl(0, 0%, 6%);
+    --white-color: #fff;
+    --body-color: hsl(220, 100%, 97%);
+
+    /*========== Font and typography ==========*/
+    /*.5rem = 8px | 1rem = 16px ...*/
+    --body-font: "Montserrat", sans-serif;
+    --normal-font-size: 1rem;
+
+    /*========== Font weight ==========*/
+    --font-regular: 400;
+    --font-semi-bold: 600;
+
+    /*========== z index ==========*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 768px) {
+    :root {
+        --normal-font-size: 1rem;
+    }
+}
+
+/*=============== BASE ===============*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--black-color);
+}
+
+ul {
+    list-style: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+    max-width: 1120px;
+    margin-inline: 1.5rem;
+}
+
+/*=============== HEADER ===============*/
+.header {
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--black-color);
+    box-shadow: 0 2px 16px hsla(220, 32%, 8%, .3);
+    z-index: var(--z-fixed);
+}
+
+/*=============== NAV ===============*/
+.nav {
+    height: 50px;
+    width: 90%;
+}
+
+.nav__logo,
+.nav__burger,
+.nav__close {
+    color: var(--white-color);
+}
+
+.nav__data {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__logo {
+    display: inline-flex;
+    align-items: center;
+    column-gap: .25rem;
+    font-weight: var(--font-semi-bold);
+    /* Color highlighting when pressed on mobile devices */
+    /*-webkit-tap-highlight-color: transparent;*/
+}
+
+.nav__logo i {
+    font-weight: initial;
+    font-size: 1.25rem;
+}
+
+.nav__toggle {
+    position: relative;
+    width: 32px;
+    height: 32px;
+}
+
+.nav__burger,
+.nav__close {
+    position: absolute;
+    width: max-content;
+    height: max-content;
+    inset: 0;
+    margin: auto;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: opacity .1s, transform .4s;
+}
+
+.nav__close {
+    opacity: 0;
+}
+
+/* Navigation for mobile devices */
+@media screen and (max-width: 768px) {
+    
+    .nav__menu {
+        position: absolute;
+        left: 0;
+        top: 2.5rem;
+        width: 100%;
+        height: calc(100vh - 3.5rem);
+        overflow: auto;
+        pointer-events: none;
+        opacity: 0;
+        transition: top .4s, opacity .3s;
+    }
+
+    .nav__menu::-webkit-scrollbar {
+        width: 0;
+    }
+
+    .nav__list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--black-color);
+        padding-top: 1rem;
+    }
+}
+
+.nav__link {
+    width: 100%;
+    color: var(--white-color);
+    background-color: var(--black-color);
+    font-weight: var(--font-semi-bold);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color .3s;
+}
+
+.nav__link:hover {
+    background-color: var(--black-color-light);
+}
+
+/* Show menu */
+.show-menu {
+    opacity: 1;
+    top: 3.5rem;
+    pointer-events: initial;
+}
+
+/* Show icon */
+.show-icon .nav__burger {
+    opacity: 0;
+    transform: rotate(90deg);
+}
+
+.show-icon .nav__close {
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For large devices */
+@media screen and (min-width: 768px) {
+
+    .container {
+        margin-inline: auto;
+    }
+
+    .nav {
+        /* width: 50%; */
+        height: 50px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .nav__toggle {
+        display: none;
+    }
+
+    .nav__list {
+        height: 100%;
+        display: flex;
+        column-gap: 3rem;
+    }
+
+    .nav__link {
+        height: 100%;
+        padding: 0;
+        justify-content: initial;
+        column-gap: .25rem;
+    }
+
+    .nav__link:hover {
+        background-color: transparent;
+    }
+}
+
+/* ====================================================== Navigation End=========================================================================== */
+
+
+/* ====================================================== Hero Section Start=========================================================================== */
+.hero {
+    height: 100vh;
+    width: 100vw;
+}
+
+.hero img {
+    height: 90%;
+    width: 90%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.hero_img {
+    height: 120%;
+    width: 100%;
+    position: absolute;
+    top: 10;
+    left: -20%;
+    overflow: hidden;
+}
+
+.hero_content {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+.hero_content h1 {
+    font-family: "Mrs Saint Delafield", cursive;
+    font-size: 9rem;
+    margin-bottom: -5rem;
+    color: red;
+}
+.hero_content p {
+    font-family: "source sans pro", sans-serif;
+    font-size: 2rem;
+    letter-spacing: 7px;
+    margin-bottom: 2rem;
+}
+@media screen and (max-width: 768px) {
+    .hero {
+        height: 50vh;
+        width: 100vw;
+    }   
+    .hero_img {
+        height: 50%;
+        width: 70%;
+        top: 5%;
+        left: 0%;
+        overflow: hidden;
+        z-index: -1;
+    }
+    .hero_content {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 35%;
+    }
+    .hero_content h1 {
+        font-size: 3.1rem;
+        margin-bottom: -2.2rem;
+    }
+
+    .hero_content p {
+        font-size: 1.5rem;
+        letter-spacing: 3px;
+        margin-bottom: 1rem;
+    }
+}
+/* ================ About Section Start ==================== */
+ .about_container {
+            display: flex;
+            flex-direction: row;
+            max-width: 100%;
+            height: 100vh;
+            align-items: center;
+            background-color: black;
+        }
+        .text-section {
+            flex: 1;
+            padding: 20px;
+            border-radius: 8px;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .text-section h1 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            margin-left: 30%;
+            color: #0b83b3;
+        }
+        .text-section p {
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        .image-section {
+            flex: 1;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about_container {
+                flex-direction: column;
+                width: 95%;
+            }
+            .text-section, .image-section {
+                flex: none;
+                width: 95%;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+            }
+            .image-section img {
+                display: none;
+            }
+        }
+/* ================ About Section End ==================== */
